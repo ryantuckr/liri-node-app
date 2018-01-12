@@ -47,8 +47,38 @@ inquirer.prompt([{
                     name: "song"
                 }, ])
                 .then(answers => {
-                    //console.log(answers.song);
-                    spotify_this(answers.song);
+
+                    if (!answers.song) {
+                        console.log("Error: No song searched");
+                        console.log("Defaulting to 'The Signs', from 'Ace of Base'");
+
+
+                        var Spotify = require('node-spotify-api');
+
+                        var spotify = new Spotify({
+                            id: process.env.SPOTIFY_ID,
+                            secret: process.env.SPOTIFY_SECRET,
+                        });
+                        //working!!!!!!!
+                        spotify.request("https://api.spotify.com/v1/albums/5UwIyIyFzkM7wKeGtRJPgB")
+                            .then(function (data) {
+                                //console.log(data);
+                                for (i = 0; i < data.artists.length; i++) {
+                                    console.log("----------------------------------------------------------");
+                                    console.log("Artist(s): " + data.artists[i].name);
+                                    console.log("Album Name: " + data.name);
+                                    console.log("Spotify Link: " + data.href);
+                                }
+                            })
+                            .catch(function (err) {
+                                console.error('Error occurred: ' + err);
+                            });
+
+                    } else {
+                        //console.log(answers.song);
+                        spotify_this(answers.song);
+                    }
+
                 });
 
             break;
@@ -60,12 +90,44 @@ inquirer.prompt([{
                     name: "movie"
                 }, ])
                 .then(answers => {
-                    //console.log(answers.movie);
-                    movie_this(answers.movie);
+
+                    if (!answers.movie) {
+                        //console.log("You didnt put a movie in");
+                        console.log("------------------------------------------------")
+                        console.log("Error: No movie searched");
+                        console.log("Defaulting to 'Mr. Nobody'");
+                        console.log("------------------------------------------------")
+                        var queryUrl = "http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy";
+                        
+                        //console.log(queryUrl);
+                    
+                        request(queryUrl, function (error, response, body) {
+                    
+                            if (!error && response.statusCode === 200) {
+                    
+                                console.log("----------------------------------------");
+                                console.log("Title: " + JSON.parse(body).Title);
+                                console.log("Release Year: " + JSON.parse(body).Year);
+                                console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+                                //console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[0].Value);
+                                console.log("Country: " + JSON.parse(body).Country);
+                                console.log("Languages: " + JSON.parse(body).Language);
+                                console.log("Plot: " + JSON.parse(body).Plot);
+                                console.log("Actors: " + JSON.parse(body).Actors);
+                                console.log("----------------------------------------");
+                            }
+                            logData(queryUrl);
+                        });
+                        
+
+                    } 
+                    else {
+                        //console.log(answers.movie);
+                        movie_this(answers.movie);
+                    }
                 });
 
             break;
-
         case "Random":
             random_this();
             break;
