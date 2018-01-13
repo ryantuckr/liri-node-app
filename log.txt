@@ -24,3 +24,12 @@ National was searched
  was searched
 Die Hard was searched
 http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy was searched
+http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy was searched
+dust in the wind was searched
+This is my yearly tweet.
+RT @zyrok_: #MayweatherMcGregor Davis fight https://t.co/DsuPf7vSPL
+LIVE on #Periscope: Hurricane matthew https://t.co/73XTNi08Ei
+Thriller was searched
+http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy was searched
+breakfast club was searched
+dust in the wind was searched

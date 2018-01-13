@@ -49,7 +49,7 @@ inquirer.prompt([{
                 .then(answers => {
 
                     if (!answers.song) {
-                        console.log("Error: No song searched");
+                        console.log("ERROR: NO SONG SEARCHED");
                         console.log("Defaulting to 'The Signs', from 'Ace of Base'");
 
 
@@ -93,10 +93,13 @@ inquirer.prompt([{
 
                     if (!answers.movie) {
                         //console.log("You didnt put a movie in");
-                        console.log("------------------------------------------------")
-                        console.log("Error: No movie searched");
+                        console.log("------------------------------------------------");
+                        console.log("ERROR: NO MOVIE SEARCHED");
                         console.log("Defaulting to 'Mr. Nobody'");
-                        console.log("------------------------------------------------")
+                        console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>");
+                        console.log("It's on Netflix!");
+                        console.log("------------------------------------------------");
+                        
                         var queryUrl = "http://www.omdbapi.com/?t=mr+nobody&y=&plot=short&apikey=trilogy";
                         
                         //console.log(queryUrl);
